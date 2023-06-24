@@ -43,7 +43,7 @@ Desenvolvimentos necessários:
 |`2`|`EVENTO -> LISTA DE PARTICIPANTES`|`GERENCIAMENTO DE EVENTOS E LISTAS`|0%|
 |2.1|Criação Lista| CRUD Evento |0%|
 |2.2|Criação Lista| CRUD Lista de Participantes |0%|
-|`3`|`CRIAÇÃO INTERFACE GRÁFICA`|`CONTROLE DE EVENTOS`|0%|
+|`3`|`BANCO DE DADOS ARQUIVO`|`CONTROLE DE EVENTOS`|0%|
 |3.1|Criação Interface |Menu para opcoes desejadas |0%|
 |3.2|Criação Interface |Menu para listas já existentes|0%|
 |3.3|Criação Interface |Visualização lista - CRUD Participantes|0%|
