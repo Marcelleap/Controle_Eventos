@@ -44,13 +44,7 @@ Desenvolvimentos necessários:
 |2.1|Criação Lista| CRUD Evento |0%|
 |2.2|Criação Lista| CRUD Lista de Participantes |0%|
 |`3`|`BANCO DE DADOS ARQUIVO`|`CONTROLE DE EVENTOS`|0%|
-|3.1|Criação Interface |Menu para opcoes desejadas |0%|
-|3.2|Criação Interface |Menu para listas já existentes|0%|
-|3.3|Criação Interface |Visualização lista - CRUD Participantes|0%|
-|3.4|Criação Interface |Menu para novas listas|0%|
-|3.5|Criação Interface |Menu para novos eventos|0%|
-|3.6|Criação Interface |Visualização novas listas - CRUD Lista |0%|
-|3.7|Criação Interface |Visualização novos eventos - CRUD Eventos |0%|
+
 
 ## Imagens
 Nenhum imagem inserida
