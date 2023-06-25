@@ -80,7 +80,7 @@ Promover a facilitação do gerenciamento de listas de participantes de eventos 
 #### Windows 
 
     1. Para abrir um projeto no Code::Blocks, siga estas etapas:
-- Primeiramente baixe o repositório. 
+- Baixe os arquivos correspondentes ao projeto no Win pelo repositório; 
 - Abra o Code::Blocks em seu computador.
 - No menu principal, clique em "File" (Arquivo).
 - No menu suspenso, selecione "Open" (Abrir).
@@ -100,7 +100,7 @@ OBSERVAÇÃO: Há uma função no código para a limpeza do menu que pode ser ul
 
     2. Para abrir um projeto no Code::Blocks no Linux, você pode seguir estas etapas:
 
-- Baixe os arquivos correspondentes ao projeto pelo repositório; 
+- Baixe os arquivos correspondentes ao projeto no Linux pelo repositório; 
 - Abra o terminal em seu sistema Linux. Você pode encontrar o terminal na lista de aplicativos ou usar o atalho de teclado Ctrl + Alt + T.
 - Navegue até o diretório onde o projeto está localizado usando o comando cd. Por exemplo, se o seu projeto estiver em 
     "/home/usuario/MeuProjeto"
@@ -173,6 +173,7 @@ OBSERVAÇÃO: Há uma função no código para a limpeza do menu que pode ser ul
 
 ### Bugs
     1. Comnado fgets pulava a leitura  de string = substituição por scanf; 
+    2. Erro na função de remover arquivo, pois não estava removendo; 
 
 
 ## Demonstração
