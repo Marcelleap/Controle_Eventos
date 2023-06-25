@@ -6,7 +6,6 @@
 
 //Recursos da disciplina utilizados:Ponteiros, Fun��es, Lista (LSE) e Arquivo.
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -14,11 +14,11 @@
 
 int main(void)
 {
-    //Inicialização das listas LSE para eventos e participantes
+    //Inicializa��o das listas LSE para eventos e participantes
     LSE_Evento lista;
     criaListas(&lista);
 
-    //Variáveis auxiliares
+    //Vari�veis auxiliares
     int op1, op3, op4, op5;
     char nomeEvento[20], novoNomeEvento[20], nomeParticipante[40], novoNomeParticipante[40];
     char nomeRemoverE[20], nomeRemoverP[4][40];
@@ -45,7 +45,7 @@ int main(void)
 
         do
         {
-            //Switch-case para chamar as funções conforme o desejo do usuário
+            //Switch-case para chamar as fun��es conforme o desejo do usu�rio
             switch(op1)
             {
             case 1:
