@@ -3,12 +3,10 @@
 
 O projeto consiste em um sistema de controle de listas para gerenciar e coordenadar a entrada de pessoas a determinados eventos. Desse modo,  o objetivo principal pauta-sem em garantir uma lista de entradas eficiente. Assim esse mecanismo fornece uma forma de criação, modificação e cancelamento desses eventos. 
 
-
 ## Autores
 
 - Hadassa Gouvêa 
 - Marcelle Andrade Peraira 
-
 
 ## About/Descrição
 
@@ -37,7 +35,6 @@ Promover a facilitação do gerenciamento de listas de participantes de eventos 
 - Imprimir Relatórios;
 
 ## Requisitos
-
 
 #### SOBRE O CADASTRO DE NOVO EVENTO
 
@@ -99,7 +96,6 @@ OBSERVAÇÃO: Há uma função no código para a limpeza do menu que pode ser ul
 ### Linux 
 
     2. Para abrir um projeto no Code::Blocks no Linux, você pode seguir estas etapas:
-
 - Baixe os arquivos correspondentes ao projeto no Linux pelo repositório; 
 - Abra o terminal em seu sistema Linux. Você pode encontrar o terminal na lista de aplicativos ou usar o atalho de teclado Ctrl + Alt + T.
 - Navegue até o diretório onde o projeto está localizado usando o comando cd. Por exemplo, se o seu projeto estiver em 
@@ -162,14 +158,24 @@ OBSERVAÇÃO: Há uma função no código para a limpeza do menu que pode ser ul
 ## Devs e bugs 
 ### Desenvolvimento 
 
-    1. void criaListas(LSE_Evento *e) = Cria listas de novos eventos; 
-    2. void cadastro(LSE_Evento *e) = Cria novos cadastros de pessoas; 
-    3. void insereEArquiva(LSE_Evento *e, Evento *evento, int nParticipantes) = insere e arquiva cadastros; 
-    4. int imprimeCadastros(LSE_Evento *e) = imprime cadastros; 
-    5. int imprimeConsulta(LSE_Evento *e) = imprime lista de colnsulta para a remoção; 
-    6. Evento *pesquisaEvento(LSE_Evento *e, char nomeEvento[20], int idEvento) = pesquisa evento para a remoção; 
-    7. void removeEDesarquivaCadastro(LSE_Evento *e, Evento *evento)= remove eventos; 
-    8. int i = variavel global de controle; 
+1. int criaListas(LSE_Evento *e) 
+- Função para criar e inicializar as listas LSE de eventos e partipantes;
+2. int cadastro(LSE_Evento *e)
+- Função para realizar o cadastro das informaçoes dos eventos e participantes;
+3. int insereEArquiva(LSE_Evento *e, Evento *evento);
+- Função para inserir e arquivar um evento na lista
+4. int imprimeCadastros(LSE_Evento *e)
+- Função para imprimir os cadastros arquivados
+5. Evento *pesquisaEvento(LSE_Evento *e, char nome[20]);
+- Função para pesquisar e retornar um evento na MEMORIA
+6. int alteraCadastro(char nomeEvento[20], char novoNomeEvento[20]);
+- Função para alterar um evento e seus participantes no ARQUIVO
+7. int removeCadastro(char nome[20]);
+- Função para remover um evento inteiro NO ARQUIVO
+8. int desalocaCadastro(LSE_Evento *e, Evento *evento)
+  - Função para desalocar um cadastro de evento e participantes da memória
+9. int i
+- Variavel global de controle;
 
 ### Bugs
     1. Comnado fgets pulava a leitura  de string = substituição por scanf; 
