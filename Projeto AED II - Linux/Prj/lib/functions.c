@@ -1,17 +1,23 @@
-//HADASSA E MARCELLE 
+//PROJETO DE ALGORITMO E ESTRUTURA DE DADOS II - 2023/1//
+//DUPLA: Hadassa ALves de Gouvea
+
+//Escopo do projeto: Gerenciador evento/participantes que
+//opera as funcionalidades CRUD (Criar, Ler, Alterar e Remover).
+
+//Recursos da disciplina utilizados:Ponteiros, Fun��es, Lista (LSE) e Arquivo.
+
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "header.h"
 
-//Função para criar e inicializar as listas LSE de eventos e participantes
+//Fun��o para criar e inicializar as listas LSE de eventos e participantes
 int criaListas(LSE_Evento *e)
 {
     // Inicializa os ponteiros de inicio e fim da Lista LSE de eventos
     e->inicio = NULL;
     e->fim = NULL;
-    e->tam = 0;
 
     // Inicializa os ponteiros de inicio e fim da Lista LSE de participantes
     e->listaParticipantes.inicio = NULL;
@@ -20,29 +26,24 @@ int criaListas(LSE_Evento *e)
     return 0;
 }
 
-//Função para realizar o cadastro das informações dos eventos e participantes
+//Fun��o para realizar o cadastro das informa��es dos eventos e participantes
 int cadastro(LSE_Evento *e)
 {
-    //Variáveis auxiliares
+    //Vari�veis auxiliares
     int nParticipantes;
-    char nomeEvento[20], data[11], hora[6];
-    char nomeParticipante[40], telefone[16], email[30];
+    char nomeEvento[20], nomeParticipante[40];
 
 //CADASTRO DO EVENTO
-    //Alocação dinâmica na memória para o evento
+    //Aloca��o din�mica na mem�ria para o evento
     Evento *evento = (Evento *)malloc(sizeof(Evento));
 
     if (evento == NULL)
         exit(1);
 
-    //Cadastro das informações do evento
-    printf("\n----------\nCADASTRO DO EVENTO:\n\n");
-    printf("NOME DO EVENTO: ");
+    //Cadastro do nome do evento
+    printf("\n----------\nCADASTRO DO EVENTO:\n");
+    printf("\nNOME DO EVENTO: ");
     scanf("%s", nomeEvento);
-    printf("DATA: ");
-    scanf("%s", data);
-    printf("HORA: ");
-    scanf("%s", hora);
 
     do
     {
@@ -57,48 +58,38 @@ int cadastro(LSE_Evento *e)
     }
     while(nParticipantes < 1 || nParticipantes > 4);
 
-    //Registrando as informações inseridas no nó evento
-    evento->idEvento = rand() % 100; //Função para gerar um número aleatório como ID do evento
+    //Registrando as informa��es n� evento
     strcpy(evento->nomeEvento, nomeEvento);
-    strcpy(evento->data, data);
-    strcpy(evento->hora, hora);
 
 //CADASTRO DOS PARTICIPANTES
-    //Alocação dinâmica na memória para o participante
+    //Aloca��o din�mica na mem�ria para o participante
     Participante *participante = malloc(nParticipantes * sizeof(Participante));
 
     if(participante == NULL)
         exit(1);
 
-    //Cadastro das informações do evento
-    printf("\n-----\nPARTICIPANTES:");
+    //Cadastro das informa��es do evento
+    printf("\nPARTICIPANTES:");
     for(int i = 0; i < nParticipantes; i++)
     {
-        printf("\n\nNOME DO PARTICIPANTE: ");
+        printf("\nNOME DO PARTICIPANTE: ");
         scanf("%s", nomeParticipante);
-        printf("TELEFONE: ");
-        scanf("%s", telefone);
-        printf("E-MAIL: ");
-        scanf("%s", email);
 
-        //Registrando as informações inseridas no nó participante
+        //Registrando as informa��es inseridas no n� participante
         strcpy(evento->participantes[i].nomeParticipante, nomeParticipante);
-        strcpy(evento->participantes[i].telefone, telefone);
-        strcpy(evento->participantes[i].email, email);
     }
-
-    //Chamando a função para inserir os nós nas listas e no arquivo
+    //Chamando a fun��o para inserir os n�s nas listas e no arquivo
     insereEArquiva(e, evento);
 
     return 0;
 }
 
-//Função para inserir e arquivar um evento na lista
+//Fun��o para inserir e arquivar um evento na lista
 int insereEArquiva(LSE_Evento *e, Evento *evento)
 {
-    /*Como a alocação dinâmica de memória do evento e dos participantes é
-     feita na função de cadastro, esta função irá apenas inserir os nós nas
-     listas e copiá-los no arquivo.*/
+    /*Como a aloca��o din�mica de mem�ria do evento e dos participantes �
+     feita na fun��o de cadastro, esta fun��o ir� apenas inserir os n�s nas
+     listas e copi�-los no arquivo.*/
 
     //Abertura do arquivo em modo append
     FILE *arquivo = fopen("arquivo.txt", "a");
@@ -106,63 +97,58 @@ int insereEArquiva(LSE_Evento *e, Evento *evento)
     if (arquivo == NULL)
         exit(1);
 
-//INSERÇÃO DO EVENTO NA LISTA
+//INSER��O DO EVENTO NA LISTA
     //Caso 1 - Primeiro elemento da lista
     if(e->inicio == NULL)
     {
-        e->inicio = evento; //Início da lista recebe o nó evento
-        e->fim = evento; //Fim da lista recebe o nó evento
-        evento->prox = NULL; //Ponteiro *prox do nó evento aponta para NULL
+        e->inicio = evento; //In�cio da lista recebe o n� evento
+        e->fim = evento; //Fim da lista recebe o n� evento
+        evento->prox = NULL; //Ponteiro *prox do n� evento aponta para NULL
     }
 
-    //Caso 2- A partir do segundo elemento o nó evento é inserido no fim
+    //Caso 2- A partir do segundo elemento o n� evento � inserido no fim
     else
     {
-        e->fim->prox = evento; //Ponteiro *prox do nó que está no fim da lista aponta para o nó evento
-        e->fim = evento; //Fim da lista recebe o nó evento
-        evento->prox = NULL; //Ponteiro *prox do nó evento aponta para NULL
+        e->fim->prox = evento; //Ponteiro *prox do n� que est� no fim da lista aponta para o n� evento
+        e->fim = evento; //Fim da lista recebe o n� evento
+        evento->prox = NULL; //Ponteiro *prox do n� evento aponta para NULL
     }
 
-    //Inserção das informações cadastradas do evento no arquivo de maneira formatada
-    fprintf(arquivo, "\n\n----------\nID: %d\n", evento->idEvento);
-    fprintf(arquivo, "EVENTO: %s\n", evento->nomeEvento);
-    fprintf(arquivo, "DATA: %s\n", evento->data);
-    fprintf(arquivo, "HORA: %s", evento->hora);
+    //Inser��o das informa��es cadastradas do evento no arquivo de maneira formatada
+    fprintf(arquivo, "\n\n\nEVENTO: %s\n", evento->nomeEvento);
 
-
-//INSERÇÃO DOS PARTICIPANTES NA LISTA
-    //Loop para repetir a inserção de participante na lista conforme o desejo do usuário
+//INSER��O DOS PARTICIPANTES NA LISTA
+    //Loop para repetir a inser��o de participante na lista conforme o desejo do usu�rio
     for(int i = 0; i < evento->nParticipantes; i++)
     {
         //Caso 1 - Primeiro elemento da lista
         if(e->listaParticipantes.inicio == NULL)
         {
-            e->listaParticipantes.inicio = &evento->participantes[i]; //Início da lista recebe o nó participante
-            e->listaParticipantes.fim = &evento->participantes[i]; //Fim da lista recebe o nó participante
-            evento->participantes[i].prox = NULL; //Ponteiro *prox do nó participante aponta para NULL
+            e->listaParticipantes.inicio = &evento->participantes[i]; //In�cio da lista recebe o n� participante
+            e->listaParticipantes.fim = &evento->participantes[i]; //Fim da lista recebe o n� participante
+            evento->participantes[i].prox = NULL; //Ponteiro *prox do n� participante aponta para NULL
         }
 
         //Caso 2- A partir do segundo elemento insere no fim
         else
         {
-            e->listaParticipantes.fim->prox = &evento->participantes[i]; //Ponteiro *prox do nó que está no fim da lista aponta para o nó participante
-            e->listaParticipantes.fim = &evento->participantes[i]; //Fim da lista recebe o nó participante
-            evento->participantes[i].prox = NULL; //Ponteiro *prox do nó participante aponta para NULL
+            e->listaParticipantes.fim->prox = &evento->participantes[i]; //Ponteiro *prox do n� que est� no fim da lista aponta para o n� participante
+            e->listaParticipantes.fim = &evento->participantes[i]; //Fim da lista recebe o n� participante
+            evento->participantes[i].prox = NULL; //Ponteiro *prox do n� participante aponta para NULL
         }
 
-        //Inserção das informações cadastradas do participante no arquivo de maneira formatada
-        fprintf(arquivo, "\n\nPARTICIPANTE: %s\n", evento->participantes[i].nomeParticipante);
-        fprintf(arquivo, "TELEFONE: %s\n", evento->participantes[i].telefone);
-        fprintf(arquivo, "E-MAIL: %s\n", evento->participantes[i].email);
+        //Inser��o das informa��es cadastradas do participante no arquivo de maneira formatada
+        fprintf(arquivo, "\nPARTICIPANTE: %s", evento->participantes[i].nomeParticipante);
     }
 
     //Fecha o arquivo
     fclose(arquivo);
 
+    printf("\nCadastro realizado!\n");
     return 0;
 }
 
-//Função para imprimir os cadastros arquivados
+//Fun��o para imprimir os cadastros arquivados
 int imprimeCadastros(LSE_Evento *e)
 {
     //Abertura do arquivo em modo leitura
@@ -171,13 +157,13 @@ int imprimeCadastros(LSE_Evento *e)
     if (arquivo == NULL)
         exit(1);
 
-    //Variável auxiliar para ler as linhas do arquivo
+    //Vari�vel auxiliar para ler as linhas do arquivo
     char linha[100];
 
-    //Impressão do arquivo
-    printf("\n----------\nLISTA DE CADASTROS:\n");
+    //Impress�o do arquivo
+    printf("\n\nLISTA DE CADASTROS:");
 
-    //Se a lista LSE de eventos e o arquivo estiverem vazios, a lista de cadastros está vazia
+    //Se a lista LSE de eventos e o arquivo estiverem vazios, a lista de cadastros est� vazia
     if (e->inicio == NULL && fgets(linha, sizeof(linha), arquivo) == NULL)
     {
         printf("\nA lista de cadastros esta vazia!\n");
@@ -194,13 +180,33 @@ int imprimeCadastros(LSE_Evento *e)
     return 0;
 }
 
-//Função para remover e desarquivar um evento e seus participantes
-int removeEDesarquivaCadastro(LSE_Evento *e, char nomeEvento[20], int idEvento)
+//Fun��o para pesquisar e retornar um evento na MEMORIA
+Evento *pesquisaEvento(LSE_Evento *e, char nome[20])
 {
-    //Abertura do arquivo original em modo leitura
+    //Vari�vel auxiliar para percorrer a lista de eventos
+    Evento *atual = e->inicio;
+
+    //Loop para percorrer at� o fim
+    while(atual != NULL)
+    {
+        //Se o nome do n� atual foi igual ao nome do evento procurado, retorna atual
+        if(strcmp(atual->nomeEvento, nome) == 0)
+            return atual;
+
+        atual = atual->prox;
+    }
+
+    atual = NULL;
+    return atual;
+}
+
+// Fun��o para alterar um evento e seus participantes no ARQUIVO
+int alteraCadastro(char nomeEvento[20], char novoNomeEvento[20])
+{
+    // Abertura do arquivo original em modo leitura
     FILE *arquivoOriginal = fopen("arquivo.txt", "r");
 
-    //Abertura de um arquivo temporario em modo escrita
+    // Abertura de um arquivo temporario em modo escrita
     FILE *arquivoTemporario = fopen("temporario.txt", "w");
 
     if (arquivoOriginal == NULL || arquivoTemporario == NULL)
@@ -209,121 +215,138 @@ int removeEDesarquivaCadastro(LSE_Evento *e, char nomeEvento[20], int idEvento)
         exit(1);
     }
 
-    //Variáveis auxiliares
-    Evento *atual = e->inicio; //Variável para percorrer a lista de eventos
-    char linha[100]; //Variável para ler as linhas do evento
-    int encontrado = 0; //Variável para monitorar se o evento a ser removido foi encontrado
-    int n = 0;
+    char linha[100];
 
-    //Loop para percorrer a lista de eventos e procurar o ID e nome do evento que será removido na MEMÓRIA
+    // Loop para ler o arquivo
+    while (fgets(linha, sizeof(linha), arquivoOriginal) != NULL)
+    {
+        // Verifica se a linha come�a com "EVENTO: "
+        if (strstr(linha, "EVENTO: ") == linha)
+        {
+            // Substitui o nome do evento na linha pelo novo nome
+            fprintf(arquivoTemporario, "EVENTO: %s\n", novoNomeEvento);
+        }
+        else
+        {
+            // Copia a linha original para o arquivo temporario
+            fputs(linha, arquivoTemporario);
+        }
+    }
+
+    // Fecha os arquivos
+    fclose(arquivoOriginal);
+    fclose(arquivoTemporario);
+
+    // Remove o arquivo original
+    remove("arquivo.txt");
+
+    // Renomeia o arquivo temporario para o nome original
+    rename("temporario.txt", "arquivo.txt");
+
+    printf("\nCadastro alterado!\n");
+    return 0;
+}
+
+//Fun��o para remover um evento inteiro NO ARQUIVO
+int removeCadastro(char nome[20])
+{
+    // Abertura do arquivo original em modo leitura
+    FILE *arquivoOriginal = fopen("arquivo.txt", "r");
+
+    // Abertura de um arquivo temporario em modo escrita
+    FILE *arquivoTemporario = fopen("temporario.txt", "w");
+
+    if (arquivoOriginal == NULL || arquivoTemporario == NULL)
+    {
+        fclose(arquivoOriginal);
+        exit(1);
+    }
+
+    //Vari�vel auxiliar para ler as linhas do arquivo
+    char linha[100];
+
+    //Loop para ler o arquivo
+    while (fgets(linha, sizeof(linha), arquivoOriginal) != NULL)
+    {
+
+        //Verifica se a linha cont�m o nome do evento/participante a ser removido
+        if (strstr(linha, nome) == NULL)
+        {
+            //Copiar a linha original para o arquivo temporario
+            fprintf(arquivoTemporario, "%s", linha);
+        }
+    }
+
+    // Fechar os arquivos
+    fclose(arquivoOriginal);
+    fclose(arquivoTemporario);
+
+    // Remover o arquivo original
+    remove("arquivo.txt");
+
+    // Renomear o arquivo temporario para o nome original
+    rename("temporario.txt", "arquivo.txt");
+
+    printf("Remocao realizada!\n");
+
+    return 0;
+}
+
+//Fun��o para desalocar um cadastro de evento e participantes da MEM�RIA
+int desalocaCadastro(LSE_Evento *e, Evento *evento)
+{
+//Vari�vel para percorrer a lista de eventos
+    Evento *atual = e->inicio;
+
+//Loop para percorrer a lista de eventos at� o fim
     while (atual != NULL)
     {
         //Se encontrar o evento que deve ser removido
-        if (strcmp(atual->nomeEvento, nomeEvento) == 0 && atual->idEvento == idEvento)
+        if (strcmp(atual->nomeEvento, evento->nomeEvento) == 0)
         {
-            //Remove participantes associados ao evento da memória
+            //Remove todos os participantes alocados dentro do evento da mem�ria
             for (int i = 0; i < atual->nParticipantes; i++)
-                free(atual->participantes[i].prox);
+                free(&atual->participantes[i]);
 
-            //Remove evento da memória
-            //Caso 1 - Remoção do primeiro elemento da lista
+            //Remove evento da mem�ria
+            //Caso 1 - Remo��o do primeiro elemento da lista
             if (atual == e->inicio)
-                e->inicio = atual->prox; //Início da lista recebe o *prox do nó evento
+                e->inicio = atual->prox; //In�cio da lista recebe o *prox do n� evento
 
-            //Caso 2 - Remoção do último elemento da lista
+            //Caso 2 - Remo��o do �ltimo elemento da lista
             if (atual == e->fim)
             {
-                Evento *penultimo = e->inicio; //Variável auxiliar para guardar o penultimo nó da lista
-                //Enquanto não chegar no fim da lista a variável continua percorrendo
+                //Vari�vel auxiliar para guardar o penultimo n� da lista
+                Evento *penultimo = e->inicio;
+
+                //Enquanto n�o chegar no fim da lista a vari�vel continua percorrendo
                 while (penultimo->prox != NULL)
                     penultimo = penultimo->prox;
 
                 //Quando chegar no fim da lista
-                penultimo->prox = NULL; //Ponteiro *prox do penúltimo nó aponta para NULL
-                e->fim = penultimo; //Fim da lista aponta para o penúltimo nó
+                penultimo->prox = NULL; //Ponteiro *prox do pen�ltimo n� aponta para NULL
+                e->fim = penultimo; //Fim da lista aponta para o pen�ltimo n�
             }
 
-            //Caso 3 - Remoção de um elemento no meio da lista
+            //Caso 3 - Remo��o de um elemento no meio da lista
             if(atual != e->inicio && atual != e->fim)
             {
-                Evento *anteriorMeio = e->inicio; //Variável auxiliar para guardar o anterior do nó que será removido
+                //Vari�vel auxiliar para guardar o anterior do n� que ser� removido
+                Evento *anteriorMeio = e->inicio;
 
-                //Enquanto não chegar no fim da lista a variável continua percorrendo
-                while (anteriorMeio->prox != e->fim)
-                {
+                //Enquanto n�o chegar no fim da lista a vari�vel continua percorrendo
+                while(anteriorMeio->prox != atual)
                     anteriorMeio = anteriorMeio->prox;
 
-                    if(anteriorMeio == atual)
-                        anteriorMeio->prox = atual->prox;
-
-                }
+                //Se encontrar o n� anterior ao n� que deve ser removido, "costura" a lista
+                if(anteriorMeio->prox == atual)
+                    anteriorMeio->prox = atual->prox;
             }
 
             free(atual);
-            encontrado = 1;
-            printf("\nCadastro removido com sucesso!\n");
-        }
-
-        //Se não encontrar o evento que deve ser removido, copia o cadastro para o arquivo temporário
-        else
-        {
-            //Escreve evento no arquivo temporário
-            fprintf(arquivoTemporario, "EVENTO: %s\n", atual->nomeEvento);
-            fprintf(arquivoTemporario, "ID: %d\n", atual->idEvento);
-            fprintf(arquivoTemporario, "Data: %s\n", atual->data);
-            fprintf(arquivoTemporario, "Hora: %s\n", atual->hora);
-            fprintf(arquivoTemporario, "Nº Participantes: %d\n", atual->nParticipantes);
-
-            //Escreve participantes no arquivo temporário
-            for (int i = 0; i < atual->nParticipantes; i++)
-            {
-                fprintf(arquivoTemporario, "PARTICIPANTE %d:\n", i + 1);
-                fprintf(arquivoTemporario, "Nome: %s\n", atual->participantes[i].nomeParticipante);
-                fprintf(arquivoTemporario, "Telefone: %s\n", atual->participantes[i].telefone);
-                fprintf(arquivoTemporario, "Email: %s\n", atual->participantes[i].email);
-            }
-            n++;
-        }
-        atual = atual->prox;
-    }
-
-    //Se o evento não for encontrado na memória, pesquisa no arquivo original
-    if(encontrado == 0)
-    {
-        char eventoBuscado[100]; //Variável para ler as linhas do arquivo
-
-        //Enquanto o arquivo não chegar ao fim
-        while (fgets(linha, sizeof(linha), arquivoOriginal) != NULL)
-        {
-            //Se o evento for encontrado
-            if (strcmp(linha, eventoBuscado) == 0)
-                encontrado = 1;
-            printf("Evento removido com sucesso do arquivo!\n");
-            return 0;
+            printf("\nCadastro desalocado da memoria com sucesso!\n");
         }
     }
 
-//Se o evento não for encontrado na memória e nem no arquivo
-    if (encontrado == 0)
-    {
-        printf("\nCadastro não encontrado!\n");
-        remove("temporario.txt");
-        return 1;
-    }
-
-//Se foi encontrado ou na memória ou no arquivo
-    else
-    {
-        //Fechando os arquivos abertos
-        fclose(arquivoOriginal);
-        fclose(arquivoTemporario);
-
-        //Renomeia arquivo temporário para substituir o arquivo original
-        rename("temporario.txt", "arquivo.txt");
-        remove("temporario.txt");
-
-        printf("Evento removido com sucesso do arquivo!\n");
-
-        return 0;
-    }
+    return 0;
 }
