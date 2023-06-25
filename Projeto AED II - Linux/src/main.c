@@ -1,11 +1,3 @@
-//PROJETO DE ALGORITMO E ESTRUTURA DE DADOS II - 2023/1//
-//DUPLA: Hadassa ALves de Gouvea
-
-//Escopo do projeto: Gerenciador evento/participantes que
-//opera as funcionalidades CRUD (Criar, Ler, Alterar e Remover).
-
-//Recursos da disciplina utilizados:Ponteiros, Fun��es, Lista (LSE) e Arquivo.
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,12 +6,12 @@
 
 int main(void)
 {
-    //Inicializa��o das listas LSE para eventos e participantes
+    //Inicialização das listas LSE para eventos e participantes
     LSE_Evento lista;
     criaListas(&lista);
 
-    //Vari�veis auxiliares
-    int op1, op3, op4, op5;
+    //Variáveis auxiliares
+    int op1, op3, op4;
     char nomeEvento[20], novoNomeEvento[20], nomeParticipante[40], novoNomeParticipante[40];
     char nomeRemoverE[20], nomeRemoverP[4][40];
 
@@ -28,7 +20,6 @@ int main(void)
     printf("\n-------------------------------------------\n");
     printf("\tGERENCIADOR DE EVENTOS:\n");
     printf("\n-------------------------------------------\n");
-
 
     //Loop do menu principal
     do
@@ -44,7 +35,7 @@ int main(void)
 
         do
         {
-            //Switch-case para chamar as fun��es conforme o desejo do usu�rio
+            //Switch-case para chamar as funções conforme o desejo do usuário
             switch(op1)
             {
             case 1:
@@ -63,7 +54,7 @@ int main(void)
 
                 do
                 {
-                    printf("Insira a quantidade de participantes do evento: ");
+                    printf("\n\nInsira a quantidade de participantes do evento: ");
                     scanf("%d", &op4);
                 }
                 while(op4 != 1 && op4 != 2 && op4 != 3 && op4 != 4);
@@ -102,11 +93,11 @@ int main(void)
                     printf("\n\nInsira o nome do evento que deseja alterar: ");
                     scanf("%s", nomeEvento);
                     strcpy(nomeEvento, "EVENTO: ");
-                    printf("\n\nInsira o novo nome para o evento: ");
+                    printf("\nInsira o novo nome para o evento: ");
                     scanf("%s", novoNomeEvento);
                     strcpy(nomeEvento, "EVENTO: ");
 
-                    alteraCadastro(nomeEvento, novoNomeEvento);
+                    alteraCadastroEvento(nomeEvento, novoNomeEvento);
                 }
 
                 if(op3 == 2) //Alterar participante
@@ -114,11 +105,11 @@ int main(void)
                     printf("\n\nInsira o nome do participante que deseja alterar: ");
                     scanf("%s", nomeParticipante);
                     strcpy(nomeParticipante, "PARTICIPANTE: ");
-                    printf("\n\nInsira o novo nome para o evento: ");
+                    printf("\nInsira o novo nome para o participante: ");
                     scanf("%s", novoNomeParticipante);
                     strcpy(novoNomeParticipante, "PARTICIPANTE: ");
 
-                    alteraCadastro(nomeParticipante, novoNomeParticipante);
+                    alteraCadastroParticipante(nomeParticipante, novoNomeParticipante);
                 }
                 break;
 
@@ -133,7 +124,7 @@ int main(void)
         while(op1 != 1 && op1 != 2 && op1 != 3 && op1 != 4 && op1 != 5);
 
     }
-    while(op1 != 5 && continuar == 1);
+    while(op1 != 5);
 
     return 0;
 }

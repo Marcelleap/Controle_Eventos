@@ -1,5 +1,5 @@
-//PROJETO DE ALGORITMO E ESTRUTURA DE DADOS II - 2023/1//
-//DUPLA: Hadassa ALves de Gouvea
+/*PROJETO DE ALGORITMO E ESTRUTURA DE DADOS II - 2023/1 */
+/*DUPLA: Hadassa Alves de Gouvea e Marcelle Andrade Pereira */
 
 //Escopo do projeto: Gerenciador evento/participantes que
 //opera as funcionalidades CRUD (Criar, Ler, Alterar e Remover).
@@ -50,8 +50,10 @@ int insereEArquiva(LSE_Evento *e, Evento *evento);
 int imprimeCadastros(LSE_Evento *e);
 //Fun��o para pesquisar e retornar um evento na MEMORIA
 Evento *pesquisaEvento(LSE_Evento *e, char nome[20]);
-//Fun��o para alterar um evento e seus participantes no ARQUIVO
-int alteraCadastro(char nomeEvento[20], char novoNomeEvento[20]);
+//Fun��o para alterar um evento no ARQUIVO
+int alteraCadastroEvento(char nomeEvento[20], char novoNomeEvento[20]);
+//Fun��o para alterar um participante no ARQUIVO
+int alteraCadastroParticipante(char nomeParticipante[20], char novoNomeParticipante[20]);
 //Fun��o para remover um evento inteiro NO ARQUIVO
 int removeCadastro(char nome[20]);
 //Fun��o para desalocar um cadastro de evento e participantes da MEM�RIA
@@ -59,3 +61,4 @@ int desalocaCadastro(LSE_Evento *e, Evento *evento);
 int i;
 
 #endif
+
