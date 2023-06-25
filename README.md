@@ -18,7 +18,7 @@ A carência de um sistema especializado no controle de listas de participantes d
 
 Um sistema especializado permite automatizar e simplificar o processo de gerenciamento, facilitando a organização do evento e proporcionando uma experiência mais agradável tanto para os organizadores quanto para os participantes. Como: 
 
-     Registros e atualizações manuais: Sem um sistema especializado, os registros dos participantes e as atualizações nas listas devem ser feitos manualmente, o que pode ser demorado e propenso a erros. Além disso, lidar com grandes volumes de informações se torna uma tarefa complexa e difícil de gerenciar eficientemente.
+1. Registros e atualizações manuais: Sem um sistema especializado, os registros dos participantes e as atualizações nas listas devem ser feitos manualmente, o que pode ser demorado e propenso a erros. Além disso, lidar com grandes volumes de informações se torna uma tarefa complexa e difícil de gerenciar eficientemente.
 
 ### Objetivo
 
