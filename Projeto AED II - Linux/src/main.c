@@ -29,7 +29,6 @@ int main(void)
     printf("\tGERENCIADOR DE EVENTOS:\n");
     printf("\n-------------------------------------------\n");
 
-    int continuar = 1;
 
     //Loop do menu principal
     do
