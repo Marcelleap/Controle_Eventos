@@ -6,11 +6,11 @@
 
 int main(void)
 {
-    //InicializaÁ„o das listas LSE para eventos e participantes
+    //Inicializa√ß√£o das listas LSE para eventos e participantes
     LSE_Evento lista;
     criaListas(&lista);
 
-    //Vari·veis auxiliares
+    //Vari√°veis auxiliares
     int op1, op3, op4, op5;
     char nomeEvento[20], novoNomeEvento[20], nomeParticipante[40], novoNomeParticipante[40];
     char nomeRemoverE[20], nomeRemoverP[4][40];
@@ -21,7 +21,6 @@ int main(void)
     printf("\tGERENCIADOR DE EVENTOS:\n");
     printf("\n-------------------------------------------\n");
 
-    int continuar = 1;
 
     //Loop do menu principal
     do
@@ -37,7 +36,7 @@ int main(void)
 
         do
         {
-            //Switch-case para chamar as funÁıes conforme o desejo do usu·rio
+            //Switch-case para chamar as fun√ß√µes conforme o desejo do usu√°rio
             switch(op1)
             {
             case 1:
