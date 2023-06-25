@@ -31,7 +31,9 @@ Promover a facilitação do gerenciamento de listas de participantes de eventos 
 
 - Criar lista de Eventos; 
 - Remover lista de Eventos;
-- Adicionar Novos participantes; 
+- Alterar listas e paarticipantes; 
+- Adicionar Novos participantes;
+- Remover Participantes
 - Imprimir Relatórios;
 
 ## Requisitos
