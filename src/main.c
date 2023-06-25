@@ -9,7 +9,7 @@ int main(void)
 {
     srand(time(NULL));
 
-    CSE_Evento lista;
+    LSE_Evento lista;
     criaListas(&lista);
 
     int op1, op2;
@@ -28,7 +28,7 @@ int main(void)
         printf("Opcao: ");
         scanf("%d", &op1);
 
-        clearscr();
+        clearscr();// FUNÇÃO PARA LIMPAR TELA DO LINUX POR ISSO PODE SER QUE AO TESTAR NO WIN APARECA UM WARNING. 
 
         switch (op1)
         {
@@ -42,6 +42,8 @@ int main(void)
             break;
 
         case 3:
+            printf("\nLista de consulta de ID e Nome de eventos:\n");
+            imprimeConsulta(&lista);
             printf("\nInsira os dados para a remocao:\n");
             printf("ID do evento: ");
             scanf("%d", &op2);

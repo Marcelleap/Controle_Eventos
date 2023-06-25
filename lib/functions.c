@@ -3,20 +3,19 @@
 #include <string.h>
 #include "header.h"
 
-
 void clearscr(void)
 {
-    printf("\033c");
-    printf("\033[H\033[J");
-    return;
+	printf("\033c");
+	printf("\033[H\033[J");
+	return;
 }
 
-void criaListas(CSE_Evento *e)
+void criaListas(LSE_Evento *e)
 {
     e->inicio = NULL;
     e->fim = NULL;
 
-    e->listaParticipantes = (CSE_Participante *)malloc(sizeof(CSE_Participante));
+    e->listaParticipantes = (LSE_Participante *)malloc(sizeof(LSE_Participante));
 
     if (e->listaParticipantes == NULL)
         exit(1);
@@ -25,7 +24,7 @@ void criaListas(CSE_Evento *e)
     e->listaParticipantes->fim = NULL;
 }
 
-void cadastro(CSE_Evento *e)
+void cadastro(LSE_Evento *e)
 {
     int nParticipantes;
     char nomeEvento[20], data[11], hora[6];
@@ -79,7 +78,7 @@ void cadastro(CSE_Evento *e)
     insereEArquiva(e, evento, nParticipantes);
 }
 
-void insereEArquiva(CSE_Evento *e, Evento *evento, int nParticipantes)
+void insereEArquiva(LSE_Evento *e, Evento *evento, int nParticipantes)
 {
     if (e->inicio == NULL)
     {
@@ -107,7 +106,7 @@ void insereEArquiva(CSE_Evento *e, Evento *evento, int nParticipantes)
     }
 }
 
-int imprimeCadastros(CSE_Evento *e)
+int imprimeCadastros(LSE_Evento *e)
 {
     if (e->inicio == NULL)
     {
@@ -145,7 +144,33 @@ int imprimeCadastros(CSE_Evento *e)
     return count - 1;
 }
 
-Evento *pesquisaEvento(CSE_Evento *e, char nomeEvento[20], int idEvento)
+int imprimeConsulta(LSE_Evento *e)
+{
+    if (e->inicio == NULL)
+    {
+        printf("\nNenhum evento cadastrado.\n");
+        return 0;
+    }
+
+    Evento *atual = e->inicio;
+    int count = 1;
+
+    printf("\nEVENTOS CADASTRADOS:\n");
+
+    while (atual != NULL)
+    {
+        printf("\nEvento %d:\n", count);
+        printf("ID: %d\n", atual->idEvento);
+        printf("Nome: %s\n\n", atual->nomeEvento);
+
+        atual = atual->prox;
+        count++;
+    }
+
+    return count - 1;
+}
+
+Evento *pesquisaEvento(LSE_Evento *e, char nomeEvento[20], int idEvento)
 {
     if (e->inicio == NULL)
     {
@@ -167,9 +192,9 @@ Evento *pesquisaEvento(CSE_Evento *e, char nomeEvento[20], int idEvento)
     return NULL;
 }
 
-void removeEDesarquivaCadastro(CSE_Evento *e, Evento *evento)
+void removeEDesarquivaCadastro(LSE_Evento *e, Evento *evento)
 {
-    int i;
+
     if (evento == NULL)
         return;
 

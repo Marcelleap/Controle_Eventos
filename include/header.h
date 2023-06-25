@@ -13,7 +13,7 @@ typedef struct
 {
     Participante *inicio;
     Participante *fim;
-} CSE_Participante;
+} LSE_Participante;
 
 typedef struct evento
 {
@@ -30,14 +30,17 @@ typedef struct
 {
     Evento *inicio;
     Evento *fim;
-    CSE_Participante *listaParticipantes;
-} CSE_Evento;
+    LSE_Participante *listaParticipantes;
+} LSE_Evento;
 
-void criaListas(CSE_Evento *e);
-void cadastro(CSE_Evento *e);
-void insereEArquiva(CSE_Evento *e, Evento *evento, int nParticipantes);
-int imprimeCadastros(CSE_Evento *e);
-Evento *pesquisaEvento(CSE_Evento *e, char nomeEvento[20], int idEvento);
-void removeEDesarquivaCadastro(CSE_Evento *e, Evento *evento);
+void criaListas(LSE_Evento *e);
+void cadastro(LSE_Evento *e);
+void insereEArquiva(LSE_Evento *e, Evento *evento, int nParticipantes);
+int imprimeCadastros(LSE_Evento *e);
+int imprimeConsulta(LSE_Evento *e);
+Evento *pesquisaEvento(LSE_Evento *e, char nomeEvento[20], int idEvento);
+void removeEDesarquivaCadastro(LSE_Evento *e, Evento *evento);
+int i;
 
 #endif
+
