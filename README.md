@@ -3,6 +3,10 @@
 
 O projeto consiste em um sistema de controle de listas para gerenciar e coordenadar a entrada de pessoas a determinados eventos. Desse modo,  o objetivo principal pauta-se em garantir uma lista de entradas eficiente. Assim esse mecanismo fornece uma forma de criação, modificação e cancelamento desses eventos. 
 
+## Link para o video de demostracao do codigo 
+<li><a href="https://drive.google.com/drive/folders/1SCLyx5Twri7Z16dVuUv912cRgvV9qKc3"> Video explicando o codigo</a></li>
+<li><a href="https://drive.google.com/drive/folders/1SCLyx5Twri7Z16dVuUv912cRgvV9qKc3"> Video de demostracao</a></li>
+
 ## Autores
 
 - Hadassa Gouvêa 
