@@ -1,3 +1,11 @@
+/*PROJETO DE ALGORITMO E ESTRUTURA DE DADOS II - 2023/1 */
+/*DUPLA: Hadassa Alves de Gouvea e Marcelle Andrade Pereira */
+
+//Escopo do projeto: Gerenciador evento/participantes que
+//opera as funcionalidades CRUD (Criar, Ler, Alterar e Remover).
+
+//Recursos da disciplina utilizados:Ponteiros, Fun��es, Lista (LSE) e Arquivo.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,111 +14,103 @@
 
 int main(void)
 {
-    //Inicialização das listas LSE para eventos e participantes
+    srand(time(NULL));
+
     LSE_Evento lista;
     criaListas(&lista);
 
-    //Variáveis auxiliares
-    int op1, op3, op4;
-    char nomeEvento[20], novoNomeEvento[20], nomeParticipante[40], novoNomeParticipante[40];
-    char nomeRemoverE[20], nomeRemoverP[4][40];
 
-    printf("PROJETO DE ALGORITMO E ESTRUTURA DE DADOS II - 2023/1\n");
-    printf("DUPLA: Hadassa Alves de Gouvea e Marcelle Andrade Pereira\n\n");
-    printf("\n-------------------------------------------\n");
-    printf("\tGERENCIADOR DE EVENTOS:\n");
-    printf("\n-------------------------------------------\n");
+    int op1, op2,op3,op5;
+    char nomeEvento[20];
+    char  novoNomeEvento[20], nomeParticipante[40], novoNomeParticipante[40];
 
-    //Loop do menu principal
     do
     {
-        printf("\nMENU:\n");
-        printf("[1] Cadastrar novo evento\n");
-        printf("[2] Visualizar cadastros\n");
-        printf("[3] Remover cadastro\n");
-        printf("[4] Alterar cadastro\n");
+        printf("\n------------------------------\n");
+        printf("GERENCIADOR DE EVENTOS:\n");
+        printf("[1] Visualizar cadastros\n");
+        printf("[2] Cadastrar novo evento\n");
+        printf("[3] Alterar cadastro\n");
+        printf("[4] Remover cadastro\n");
         printf("[5] Sair\n");
         printf("Opcao: ");
         scanf("%d", &op1);
 
         do
         {
-            //Switch-case para chamar as funções conforme o desejo do usuário
             switch(op1)
             {
             case 1:
-                cadastro(&lista);
+                imprimeCadastros(&lista);
                 break;
 
             case 2:
-                imprimeCadastros(&lista);
+                cadastro(&lista);
+                printf("\nCadastro realizado!\n");
                 break;
 
             case 3:
-                imprimeCadastros(&lista);
-
-                printf("\nInsira o nome do evento que deseja remover: \n");
-                scanf("%s", nomeRemoverE);
-
                 do
                 {
-                    printf("\n\nInsira a quantidade de participantes do evento: ");
-                    scanf("%d", &op4);
+                    printf("Deseja alterar evento?\n");
+                    printf("[1] Sim\n");
+                    printf("[2] Nao\n");
+                    printf("Opcao: ");
+                    scanf("%d", &op2);
+
+                    if (op2 == 1)
+
+                    {
+                        imprimeCadastros(&lista);
+                        printf("\n\nInsira o nome do evento que deseja alterar: ");
+                        scanf("%s", nomeEvento);
+                        strcpy(nomeEvento, "EVENTO: ");
+                        printf("\nInsira o novo nome para o evento: ");
+                        scanf("%s", novoNomeEvento);
+                        strcpy(novoNomeEvento, "EVENTO: ");
+
+
+                        printf("\n\nDeseja alterar participantes?\n");
+                        printf("[1] Sim - Para Alterar Evento\n");
+                        printf("[2] Nao - Para Alterar Participante \n");
+                        printf("Opcao: ");
+                        scanf("%d", &op3);
+
+                        if (op3 == 1)
+                        {
+                           printf("\n\nInsira o nome do participante que deseja alterar: ");
+                            scanf("%s", nomeParticipante);
+                            strcpy(nomeParticipante, "PARTICIPANTE: ");
+                            printf("\nInsira o novo nome para o participante: ");
+                            scanf("%s", novoNomeParticipante);
+                            strcpy(novoNomeParticipante, "PARTICIPANTE: ");
+
+                            alteraCadastroParticipante(nomeParticipante, novoNomeParticipante);
+                        }
+
+                        if (op3 != 1)
+                        {
+                            printf("\n\n Opcao invalida ");
+
+                        }
+
+                    }
+                    if (op2 != 2 || op1!=1)
+                    {
+                        printf("Opcao invalida\n");
+                    }
                 }
-                while(op4 != 1 && op4 != 2 && op4 != 3 && op4 != 4);
-
-                removeCadastro(nomeRemoverE);
-
-                int cont = 0;
-                for(int i = 0; i < op4; i++)
-                {
-                    cont++;
-                    printf("\nInsira o nome do participante %d do evento: \n", cont);
-                    scanf("%s", nomeRemoverP[i]);
-                    desalocaCadastro(&lista, pesquisaEvento(&lista, nomeRemoverP[i]));
-                }
-
-                desalocaCadastro(&lista, pesquisaEvento(&lista, nomeRemoverE));
+                while (op2 != 1 && op2 != 2);
                 break;
 
             case 4:
-                do
-                {
-                    printf("\nQual estrutura voce gostaria de alterar:\n");
-                    printf("[1] Evento\n");
-                    printf("[2] Participante\n");
-                    printf("Opcao: ");
-                    scanf("%d", &op3);
-
-                    if(op3 != 1 && op3 != 2)
-                        printf("\nOpcao invalida!\n");
-
-                }
-                while(op3 != 1 && op3 != 2);
-
-                if(op3 == 1) //Alterar evento
-                {
-                    printf("\n\nInsira o nome do evento que deseja alterar: ");
-                    scanf("%s", nomeEvento);
-                    strcpy(nomeEvento, "EVENTO: ");
-                    printf("\nInsira o novo nome para o evento: ");
-                    scanf("%s", novoNomeEvento);
-                    strcpy(nomeEvento, "EVENTO: ");
-
-                    alteraCadastroEvento(nomeEvento, novoNomeEvento);
-                }
-
-                if(op3 == 2) //Alterar participante
-                {
-                    printf("\n\nInsira o nome do participante que deseja alterar: ");
-                    scanf("%s", nomeParticipante);
-                    strcpy(nomeParticipante, "PARTICIPANTE: ");
-                    printf("\nInsira o novo nome para o participante: ");
-                    scanf("%s", novoNomeParticipante);
-                    strcpy(novoNomeParticipante, "PARTICIPANTE: ");
-
-                    alteraCadastroParticipante(nomeParticipante, novoNomeParticipante);
-                }
+                imprimeCadastros(&lista);
+                printf("\nInsira os dados para a remocao:\n");
+                printf("ID do evento: ");
+                scanf("%d", &op5);
+                printf("Nome do evento: ");
+                scanf("%s", nomeEvento);
+                removeEDesarquivaCadastro(&lista, nomeEvento, op2);
                 break;
 
             case 5:
@@ -121,10 +121,9 @@ int main(void)
                 break;
             }
         }
-        while(op1 != 1 && op1 != 2 && op1 != 3 && op1 != 4 && op1 != 5);
-
+        while(op1 != 1 && op1 != 2 && op1 != 3 && op1 != 4);
     }
-    while(op1 != 5);
+    while(op1 != 4);
 
     return 0;
 }
