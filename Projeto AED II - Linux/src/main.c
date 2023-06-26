@@ -61,6 +61,7 @@ int main(void)
                     if (op2 == 1)
 
                     {
+                      //IMPRESSAO PARA CONSULTA
                         imprimeCadastros(&lista);
                         printf("\n\nInsira o nome do evento que deseja alterar: ");
                         scanf("%s", nomeEvento);
@@ -71,8 +72,8 @@ int main(void)
 
 
                         printf("\n\nDeseja alterar participantes?\n");
-                        printf("[1] Sim - Para Alterar Evento\n");
-                        printf("[2] Nao - Para Alterar Participante \n");
+                        printf("[1] Sim - Para Alterar Participante\n");
+                        printf("[2] Nao \n");
                         printf("Opcao: ");
                         scanf("%d", &op3);
 
