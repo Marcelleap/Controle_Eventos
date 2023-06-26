@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1687751649 source:c:\users\marce\onedrive\Área de trabalho\projeto aed ii\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"header.h"
+
+1687748907 c:\users\marce\onedrive\Área de trabalho\projeto aed ii\header.h
+
+1687751928 source:c:\users\marce\onedrive\Área de trabalho\projeto aed ii\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"header.h"
+
