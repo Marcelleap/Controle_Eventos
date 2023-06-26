@@ -1,7 +1,7 @@
 
 # CONTROLE DE EVENTOS 
 
-O projeto consiste em um sistema de controle de listas para gerenciar e coordenadar a entrada de pessoas a determinados eventos. Desse modo,  o objetivo principal pauta-sem em garantir uma lista de entradas eficiente. Assim esse mecanismo fornece uma forma de criação, modificação e cancelamento desses eventos. 
+O projeto consiste em um sistema de controle de listas para gerenciar e coordenadar a entrada de pessoas a determinados eventos. Desse modo,  o objetivo principal pauta-se em garantir uma lista de entradas eficiente. Assim esse mecanismo fornece uma forma de criação, modificação e cancelamento desses eventos. 
 
 ## Autores
 
@@ -14,7 +14,7 @@ O projeto consiste em um sistema de controle de listas para gerenciar e coordena
 
 A carência de um sistema especializado no controle de listas de participantes de grandes eventos pode ser uma lacuna significativa na gestão eficiente dessas ocasiões. A organização de eventos de grande porte requer um gerenciamento adequado dos participantes, desde o registro inicial até a presença no local. Sem um sistema especializado para lidar com essas listas, podem surgir diversos desafios e problemas.
 
-Um sistema especializado permite automatizar e simplificar o processo de gerenciamento, facilitando a organização do evento e proporcionando uma experiência mais agradável tanto para os organizadores quanto para os participantes. Como: 
+Um sistema especializado permite automatizar e simplificar o processo de gerenciamento, facilitando a organização do evento e proporcionando uma experiência mais agradável tanto para os organizadores quanto para os participantes.  
 
 1. Registros e atualizações manuais: Sem um sistema especializado, os registros dos participantes e as atualizações nas listas devem ser feitos manualmente, o que pode ser demorado e propenso a erros. Além disso, lidar com grandes volumes de informações se torna uma tarefa complexa e difícil de gerenciar eficientemente.
 
@@ -22,18 +22,19 @@ Um sistema especializado permite automatizar e simplificar o processo de gerenci
 
 Promover a facilitação do gerenciamento de listas de participantes de eventos envolvendo a adoção de medidas e recursos que tornam o processo mais eficiente, preciso e conveniente tanto para os organizadores quanto para os participantes.
 
-    Sistema especializado;
-    Automação de processos;
-    Análise de dados e relatórios;
+- Sistema especializado;
+- Análise de dados e relatórios;
 
 
 ## Funcionalidades
 
-- Criar lista de Eventos; 
+- Criar lista de Eventos;
+- Alterar listas de Eventos;
 - Remover lista de Eventos;
+- Adicionar participantes na lista; 
 - Alterar listas e paarticipantes; 
 - Adicionar Novos participantes;
-- Remover Participantes
+- Remover Eventos;
 - Imprimir Relatórios;
 
 ## Requisitos
@@ -44,13 +45,13 @@ Promover a facilitação do gerenciamento de listas de participantes de eventos 
 |------|-------------------------------|
 |R01|O sistema terá a possibilidade de que o usuário crie um novo cadastro através do menu|
 |R02|O usuário poderá adicionar eventos com o complemto de nome, data, hora e quantidade de participantes|
-|R03|O usuário poderá visualizar lista de consulta para a remoção do evento|
+|R03|O usuário poderá visualizar lista de consulta do evento|
 |R04|O usuário poderá remover lista de eventos criadas através de pesquisa informado o ID e o Nome do Evento|
 
 #### SOBRE O CADASTRO DE PARTICIPANTE 
 |_ID_|      _DESCRIÇÃO DO REQUISITO_   |
 |------|-------------------------------|
-|R01|O sistema terá a possibilidade de que o usuário crie um novo participante, desde de que o número seja definido na opção de criação da lista|
+|R01|O sistema terá a possibilidade de que o usuário crie um novo participante, desde de que o número seja definido na opção de criação do evento|
 |R02|O usuário ao inserir participante ao evento devera adicionar informações como nome, telefone e e-mail|
 |R03|O sistema ao remover o evento também removerá os participantes existentes no mesmo.|
 
@@ -67,11 +68,10 @@ Promover a facilitação do gerenciamento de listas de participantes de eventos 
 |`1`|`SELECIONAR EVENTO -> SELECIONAR LISTA`|`GERENCIAMENTO DE ENTRADAS`|100%|
 |1.1|Selecionar Lista| Criação de  Paricipante |100%|
 |`2`|`EVENTO -> LISTA DE PARTICIPANTES`|`GERENCIAMENTO DE EVENTOS E LISTAS`|100%|
-|2.1|Criação Lista| CRD Evento |100%|
-|2.2|Criação Lista| CRD Lista de Participantes |100%|
+|2.1|Criação Lista| CRUD Evento |100%|
+|2.2|Criação Lista| CRUD Lista de Participantes |100%|
 |`3`|`BANCO DE DADOS ARQUIVO`|`CONTROLE DE EVENTOS`|100%|
 |3.1|Criação de arquivo binário| CRD Evento |100%|
-|2.2|Criação de arquivo temporário| CRD Lista de Participantes |100%|
 
 
 ## Instrução de Uso de Código 
@@ -182,7 +182,9 @@ OBSERVAÇÃO: Há uma função no código para a limpeza do menu que pode ser ul
 ### Bugs
     1. Comnado fgets pulava a leitura  de string = substituição por scanf; 
     2. Erro na função de remover arquivo, pois não estava removendo; 
-
+    3. Problemas de indição de ponteiro; 
+    4. Problemas para executar o arquivo; 
+    5. Problema para remover dados; 
 
 ## Demonstração
 
